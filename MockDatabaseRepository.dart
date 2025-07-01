@@ -53,7 +53,7 @@ class MockDatabaseRepository implements DatabaseRepository {
   @override
   Future<Item> readItem(String name) async {
     // TODO: implement readItem
-    Item item = Item("name", "description", 1);
+    Item item = Item("name", "description", 1, 1);
     return item;
   }
 

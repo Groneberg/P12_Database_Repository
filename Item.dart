@@ -5,17 +5,19 @@ class Item {
   String name;
   String description;
   int amount = 0;
+  int minAmount = 0;
   // map vielleicht besser ?
-  List<Event> events = [];
+  Map<String,Event> events = {};
 
-  Item(this.name, this.description, this.amount);
+  Item(this.name, this.description, this.amount, this.minAmount);
 
-  /// Adds an event to the current item.
-  /// This allows for associating events with a specific item.
-  void addEventToItem(Event event) {
-    this.events.add(event);
+  /// Adds an event to the current box.
+  /// This allows for associating events with this specific box.
+  void addEvent(Event event) {
+    this.events[name] = event;
   }
 
+  // TODO bessere umsetzung der Informationen
   @override
   String toString() {
     return 'Name: ${this.name}\n'
