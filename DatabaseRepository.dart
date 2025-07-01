@@ -9,9 +9,9 @@ abstract class DatabaseRepository {
   Future<Box> readBox(String name);
   Future<Event> readEvent(String name);
   Future<Item> readItem(String name);
-  Future<void> createBox(String box);
-  Future<void> createEvent(String event);
-  Future<void> createItem(String item);
+  Future<void> createBox(Box box);
+  Future<void> createEvent(Event event);
+  Future<void> createItem(Item item);
   Future<void> updateBox(Box box);
   Future<void> updateEvent(Event event);
   Future<void> updateItem(Item item);
