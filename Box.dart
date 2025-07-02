@@ -6,32 +6,33 @@ class Box {
   String name;
   String description;
   // map vielleicht besser ?
-  List<Box> boxes = [];
+  Map<String,Box> boxes = {};
   // map vielleicht besser ?
-  List<Item> items = [];
+  Map<String,Item> items = {};
   // map vielleicht besser ?
-  List<Event> events = [];
+  Map<String,Event> events = {};
 
   Box(this.name, this.description);
 
   /// Adds a sub-box to the current box.
   /// This allows for creating a hierarchy of boxes.
   void addBox(Box box) {
-    this.boxes.add(box);
+    this.boxes[name] = box;
   }
 
   /// Adds an item to the current box.
-  /// This allows for associating items with a specific box.
-  void addItemToBox(Item item) {
-    this.items.add(item);
+  /// This allows for associating items with this specific box.
+  void addItem(Item item) {
+    this.items[name] = item;
   }
 
   /// Adds an event to the current box.
-  /// This allows for associating events with a specific box.
-  void addEventToBox(Event event) {
-    this.events.add(event);
+  /// This allows for associating events with this specific box.
+  void addEvent(Event event) {
+    this.events[name] = event;
   }
 
+  // TODO bessere umsetzung der Informationen
   @override
   String toString() {
     return 'Name: ${this.name}\n'

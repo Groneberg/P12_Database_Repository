@@ -7,7 +7,6 @@ class Event {
 
   Event(this.name, this.time, this.date, this.description);
 
-
   // TODO bessere umsetzung der Informationen
   @override
   String toString() {
