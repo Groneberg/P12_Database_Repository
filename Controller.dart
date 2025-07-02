@@ -2,20 +2,28 @@ import 'Box.dart';
 // import 'Event.dart';
 // import 'Item.dart';
 
-class Controller {
-  Map<String, Box> boxes = {};
+import 'dart:io';
 
-  void addBoxToList(Box box) {
-    this.boxes[box.name] = box;
+class Controller {
+  Box mainBox = Box("mainBox", "");
+  Box currentBox = Box("currentBox", "");
+
+  // TODO später löschen | ist nur für test geschrieben
+  bool isRunning = true;
+  String input = "";
+  
+  void addBoxMainBox(Box box) {
+    this.mainBox.addBox(box);
   }
 
   // TODO später schleife und verschachtelung beachten
+  // TODO funktionsnamen später ändern
   void deleteBoxFromList(String key) {
-    this.boxes.remove(key);
+    this.mainBox.boxes.remove(key);
   }
 
   // TODO später löschen | ist nur für testdaten geschrieben
-  Map<String, Box> getTestMap() {
+  Box getTestDataBox() {
     // Ebene 1: Hauptlager
     Box hauptLager = Box('HauptLager', 'Zentrales Lager für alle Güter.');
 
@@ -67,7 +75,60 @@ class Controller {
     abteilungC.addBox(regalC1);
     Map<String, Box> boxes = {};
     boxes[hauptLager.name] = hauptLager;
-    return boxes;
+    return hauptLager;
   }
 
+  // TODO später löschen | ist nur für test geschrieben
+  void runBoxSystem() {
+      do {
+    print("Welcome to the Box Management System!");
+    print("1. Show Main Box");
+    print("2. Show Current Box");
+    print("3. Add Box to Main Box");
+    print("4. Delete Box from Main Box");
+    print("5. Find Box by Name");
+    print("6. Exit");
+
+    stdout.write("Please enter your choice: ");
+    input = stdin.readLineSync() ?? "";
+
+    switch (input) {
+      case "1":
+        this.mainBox.showBoxTree();
+        break;
+      case "2":
+        this.currentBox.showBoxTree();
+        break;
+      case "3":
+        stdout.write("Enter box name: ");
+        String boxName = stdin.readLineSync() ?? "";
+        stdout.write("Enter box description: ");
+        String boxDescription = stdin.readLineSync() ?? "";
+        this.addBoxMainBox(Box(boxName, boxDescription));
+        break;
+      case "4":
+        stdout.write("Enter box name to delete: ");
+        String boxToDelete = stdin.readLineSync() ?? "";
+        this.deleteBoxFromList(boxToDelete);
+        break;
+      case "5":
+        stdout.write("Enter box name to find: ");
+        String boxNameToFind = stdin.readLineSync() ?? "";
+        Box? foundBox = this.mainBox.findBoxByName(boxNameToFind);
+        if (foundBox != null) {
+          print("Found Box: ${foundBox.toString()}");
+        } else {
+          print("Box not found.");
+        }
+        break;
+      case "6":
+        isRunning = false;
+        break;
+      default:
+        print("Invalid choice, please try again.");
+    }
+    
+  } while (isRunning);
+
+  }
 }

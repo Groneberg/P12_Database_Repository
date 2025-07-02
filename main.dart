@@ -4,9 +4,10 @@
 import 'Controller.dart';
 
 void main() {
-
-    Controller con = Controller();
-    con.boxes = con.getTestMap();
-
-    print(con.boxes);
-    }
+  Controller con = Controller();
+  con.mainBox = con.getTestDataBox();
+  
+  // print(con.mainBox.findBoxByName("Regal B1"));
+  // con.mainBox.showBoxTree();
+  con.runBoxSystem();
+}
