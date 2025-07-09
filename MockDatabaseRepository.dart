@@ -5,90 +5,90 @@ import 'DatabaseRepository.dart';
 
 class MockDatabaseRepository implements DatabaseRepository {
   @override
-  Future<void> createBox(Box box) async {
+  void createBox(Box box) async {
     // TODO: implement createBox
     print("This box will be saved: $box");
   }
 
   @override
-  Future<void> createEvent(Event event) async {
+  void createEvent(Event event) {
     // TODO: implement createEvent
     print("This event will be saved: $event");
   }
 
   @override
-  Future<void> createItem(Item item) async {
+  void createItem(Item item) {
     // TODO: implement createItem
     print("This item will be saved: $item");
   }
 
   @override
-  Future<List<Box>> readAllBoxes() async {
+  Map<String, Box> readAllBoxes() {
     // TODO: implement readAllBoxes
-    List<Box> boxes = [];
+    Map<String, Box> boxes = {};
     return boxes;
   }
 
   @override
-  Future<List<Event>> readAllEvent() async {
+  Map<String, Event> readAllEvent() {
     // TODO: implement readAllEvent
-    List<Event> events = [];
+    Map<String, Event> events = {};
     return events;
   }
 
   @override
-  Future<Box> readBox(String name) async {
+  Box readBox(String name) {
     // TODO: implement readBox
     Box box = Box("name", "description");
     return box;
   }
 
   @override
-  Future<Event> readEvent(String name) async {
+  Event readEvent(String name) {
     // TODO: implement readEvent
     Event event = Event("name", "time", "date", "description");
     return event;
   }
 
   @override
-  Future<Item> readItem(String name) async {
+  Item readItem(String name) {
     // TODO: implement readItem
     Item item = Item("name", "description", 1, 1);
     return item;
   }
 
   @override
-  Future<void> updateBox(Box box) async {
+  void updateBox(Box box) {
     // TODO: implement updateBox
     print("The box $box will be updated.");
   }
 
   @override
-  Future<void> updateEvent(Event event) async {
+  void updateEvent(Event event) {
     // TODO: implement updateEvent
     print("The event $event will be updated.");
   }
 
   @override
-  Future<void> updateItem(Item item) async {
+  void updateItem(Item item) {
     // TODO: implement updateItem
     print("The item $item will be updated.");
   }
 
   @override
-  Future<void> deleteBox(String name) async {
+  void deleteBox(String name) {
     // TODO: implement deleteBox
     print("The box $name will be deleted.");
   }
 
   @override
-  Future<void> deleteEvent(String name) async {
+  void deleteEvent(String name) {
     // TODO: implement deleteEvent
     print("The Event $name will be deleted.");
   }
 
   @override
-  Future<void> deleteItem(String name) async {
+  void deleteItem(String name) {
     // TODO: implement deleteItem
     print("The item $name will be deleted.");
   }

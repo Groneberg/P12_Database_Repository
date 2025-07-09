@@ -4,18 +4,18 @@ import 'Item.dart';
 
 /// Interface for a database repository.
 abstract class DatabaseRepository {
-  Future<List<Box>> readAllBoxes();
-  Future<List<Event>> readAllEvent();
-  Future<Box> readBox(String name);
-  Future<Event> readEvent(String name);
-  Future<Item> readItem(String name);
-  Future<void> createBox(Box box);
-  Future<void> createEvent(Event event);
-  Future<void> createItem(Item item);
-  Future<void> updateBox(Box box);
-  Future<void> updateEvent(Event event);
-  Future<void> updateItem(Item item);
-  Future<void> deleteBox(String name);
-  Future<void> deleteEvent(String name);
-  Future<void> deleteItem(String name);
+  Map<String, Box> readAllBoxes();
+  Map<String, Event> readAllEvent();
+  Box readBox(String name);
+  Event readEvent(String name);
+  Item readItem(String name);
+  void createBox(Box box);
+  void createEvent(Event event);
+  void createItem(Item item);
+  void updateBox(Box box);
+  void updateEvent(Event event);
+  void updateItem(Item item);
+  void deleteBox(String name);
+  void deleteEvent(String name);
+  void deleteItem(String name);
 }
