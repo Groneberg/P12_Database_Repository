@@ -4,6 +4,9 @@ import 'Item.dart';
 import 'DatabaseRepository.dart';
 
 class MockDatabaseRepository implements DatabaseRepository {
+  Box mainBox = Box("mainBox", "");
+  Box currentBox = Box("currentBox", "");
+
   @override
   void createBox(Box box) async {
     // TODO: implement createBox

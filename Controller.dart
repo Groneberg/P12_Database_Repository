@@ -4,22 +4,23 @@ import 'Box.dart';
 
 import 'dart:io';
 
+import 'MockDatabaseRepository.dart';
+
 class Controller {
-  Box mainBox = Box("mainBox", "");
-  Box currentBox = Box("currentBox", "");
+  MockDatabaseRepository mockDatabaseRepository = MockDatabaseRepository();
 
   // TODO später löschen | ist nur für test geschrieben
   bool isRunning = true;
   String input = "";
   
   void addBoxMainBox(Box box) {
-    this.mainBox.addBox(box);
+    this.mockDatabaseRepository.mainBox.addBox(box);
   }
 
   // TODO später schleife und verschachtelung beachten
   // TODO funktionsnamen später ändern
   void deleteBoxFromList(String key) {
-    this.mainBox.boxes.remove(key);
+    this.mockDatabaseRepository.mainBox.boxes.remove(key);
   }
 
   // TODO später löschen | ist nur für testdaten geschrieben
@@ -94,10 +95,10 @@ class Controller {
 
     switch (input) {
       case "1":
-        this.mainBox.showBoxTree();
+        this.mockDatabaseRepository.mainBox.showBoxTree();
         break;
       case "2":
-        this.currentBox.showBoxTree();
+        this.mockDatabaseRepository.currentBox.showBoxTree();
         break;
       case "3":
         stdout.write("Enter box name: ");
@@ -114,7 +115,7 @@ class Controller {
       case "5":
         stdout.write("Enter box name to find: ");
         String boxNameToFind = stdin.readLineSync() ?? "";
-        Box? foundBox = this.mainBox.findBoxByName(boxNameToFind);
+        Box? foundBox = this.mockDatabaseRepository.mainBox.findBoxByName(boxNameToFind);
         if (foundBox != null) {
           print("Found Box: ${foundBox.toString()}");
         } else {

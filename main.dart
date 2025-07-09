@@ -5,7 +5,7 @@ import 'Controller.dart';
 
 void main() {
   Controller con = Controller();
-  con.mainBox = con.getTestDataBox();
+  con.mockDatabaseRepository.mainBox = con.getTestDataBox();
   
   // print(con.mainBox.findBoxByName("Regal B1"));
   // con.mainBox.showBoxTree();
